@@ -39,7 +39,7 @@ class FDFDataset(CustomDataset):
             f"Number of images: {len(self)}, landmarks: {len(landmarks)}"
 
     def get_mask(self, idx):
-        mask = np.ones((self.imsize, self.imsize), dtype=np.bool)
+        mask = np.ones((self.imsize, self.imsize), dtype=bool)
         bounding_box = self.bounding_boxes[idx]
         x0, y0, x1, y1 = bounding_box
         mask[y0:y1, x0:x1] = 0
@@ -70,7 +70,7 @@ class FDFDensePoseDataset(FDFDataset):
             f"Did not find mask at: {filepath}"
         masks = np.load(filepath)
         assert len(masks) == len(self)
-        assert masks.dtype == np.bool
+        assert masks.dtype == bool
         self.masks = masks
 
     def get_item(self, index):

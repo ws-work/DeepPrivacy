@@ -18,7 +18,7 @@ class MNISTDataset(torchvision.datasets.MNIST):
         self.imsize = imsize
 
     def get_mask(self):
-        mask = np.ones((self.imsize, self.imsize), dtype=np.bool)
+        mask = np.ones((self.imsize, self.imsize), dtype=bool)
         offset = self.imsize // 4
         mask[offset:-offset, offset:-offset] = 0
         return mask

@@ -102,7 +102,7 @@ def brush_stroke_mask(img_shape: typing.Tuple[int]) -> np.ndarray:
             mask.transpose(Image.FLIP_LEFT_RIGHT)
         if np.random.normal() > 0:
             mask.transpose(Image.FLIP_TOP_BOTTOM)
-        mask = np.asarray(mask, np.bool)
+        mask = np.asarray(mask, bool)
         mask = np.reshape(mask, (H, W))
         return 1 - mask
     return generate_mask(img_shape[0], img_shape[1])
